@@ -2,13 +2,13 @@
 
 Code2:
 
-import socket                                #lib to create network connection
-def scan_ports(ip, start_port, end_port):   # Function that tries connecting to each port and checks if it’s open.
+import socket                                
+def scan_ports(ip, start_port, end_port):   
     open_ports = []
     try:
         for port in range(start_port, end_port + 1):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            socket.setdefaulttimeout(0.5)  # timeout for connection
+            socket.setdefaulttimeout(0.5)  
             result = s.connect_ex((ip, port))
             if result == 0:
                 open_ports.append(port)
