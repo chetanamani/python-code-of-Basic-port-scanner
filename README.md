@@ -5,8 +5,8 @@ Code2:
 import socket
 
 def scan_ports(ip, start_port, end_port):
-    open_ports = []
-    try:
+open_ports = []
+try:
         for port in range(start_port, end_port + 1):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.settimeout(0.5)  # Half second timeout for faster scanning
@@ -14,17 +14,17 @@ def scan_ports(ip, start_port, end_port):
             if result == 0:
                 open_ports.append(port)
             s.close()
-    except KeyboardInterrupt:
+except KeyboardInterrupt:
         print("\n[!] Scan cancelled by user.")
         exit()
-    except socket.gaierror:
+except socket.gaierror:
         print("[!] Invalid IP address!")
         exit()
-    except socket.error:
+except socket.error:
         print("[!] Could not connect to server.")
         exit()
     
-    return open_ports
+return open_ports
 
 if __name__ == "__main__":
     ip = input("Enter the IP address to scan: ").strip()
